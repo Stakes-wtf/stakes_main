@@ -89,7 +89,9 @@ impl StakingPool {
         let current_share = total_bribes * 5 / 100 * periods_passed as u64;
         let min_share = total_balance / 1000;
 
-        if current_share <= min_share {
+        if current_share >= total_bribes {
+            total_bribes
+        } else if current_share <= min_share {
             if min_share > total_bribes {
                 total_bribes
             } else {
