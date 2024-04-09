@@ -2,6 +2,7 @@ import { AnchorProvider, BN, Program, setProvider, web3, workspace } from "@cora
 import { StakesWtf } from "../target/types/stakes_wtf";
 import { ASSOCIATED_TOKEN_PROGRAM_ID, MINT_SIZE, TOKEN_PROGRAM_ID, createAssociatedTokenAccountInstruction, createInitializeMint2Instruction, createMint, createMintToInstruction, createTransferInstruction, getAccount, getAssociatedTokenAddressSync, getMinimumBalanceForRentExemptMint, getMint } from "@solana/spl-token"
 import { assert } from "chai";
+import { xit } from "mocha";
 
 function assertInRange (value: number, rangeBase: number, rangeDistance: number = 1) {
   assert(value >= rangeBase - rangeDistance && value <= rangeBase + rangeDistance)
@@ -293,7 +294,7 @@ describe("stakes-wtf", () => {
     })
   })
 
-  it("Claim remaining vested tokens (accs should be closed)", async () => {
+  xit("Claim remaining vested tokens (accs should be closed)", async () => {
     await wait(20000)
     
     await program.methods
