@@ -9,7 +9,7 @@ pub mod errors;
 use instructions::*;
 use traits::Processor;
 
-declare_id!("AyavBwB5s5WYi1wE6YqF88gYuV6DYYYnYZEQ1WmNbWPJ");
+declare_id!("stkWEMeJyUyoqZu6C65z21Vzt3CezXRuix7oqJ78RwS");
 
 #[program]
 pub mod stakes_wtf {

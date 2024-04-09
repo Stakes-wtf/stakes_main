@@ -26,7 +26,7 @@ pub struct InitializePool<'info> {
     )]
     pub staking_pool: Account<'info, StakingPool>,
 
-    pub mint: Account<'info, Mint>,
+    pub mint: Box<Account<'info, Mint>>,
 
     #[account(
         init,
@@ -39,7 +39,7 @@ pub struct InitializePool<'info> {
         ],
         bump
     )]
-    pub staking_vault: Account<'info, TokenAccount>,
+    pub staking_vault: Box<Account<'info, TokenAccount>>,
 
     #[account(
         init,
@@ -47,7 +47,7 @@ pub struct InitializePool<'info> {
         mint::decimals = mint.decimals,
         mint::authority = staking_pool
     )]
-    pub gov_mint: Account<'info, Mint>,
+    pub gov_mint: Box<Account<'info, Mint>>,
 
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>
