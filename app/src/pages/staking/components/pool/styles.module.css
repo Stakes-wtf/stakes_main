@@ -1,0 +1,54 @@
+.wrapper {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    background: #FFF;
+    border-radius: 16px;
+    padding: 24px 0;
+    cursor: pointer;
+    transition: all 0.3s;
+    row-gap: 12px;
+}
+
+.wrapper:hover {
+    background: rgba(229, 229, 229, 0.5);
+}
+
+.mint_info {
+    gap: 16px;
+}
+
+.avatar, .avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+    background: #757575;
+}
+
+.wrapper p {
+    color: #060D01;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.action_wrapper {
+    gap: 8px;
+    padding: 0 12px;
+}
+
+.action_wrapper input {
+    width: 50%;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(1, 33, 57, 0.13);
+    background: none;
+    padding: 0 6px;
+
+    color: #757575;
+    font-size: 12px;
+}
+
+.action_wrapper button {
+    width: 50%;
+}

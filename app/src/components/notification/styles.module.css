@@ -1,0 +1,128 @@
+.warning {
+    --notification-color: 255, 209, 92
+}
+
+.error {
+    --notification-color: 227, 111, 111
+}
+
+.reminder {
+    --notification-color: 108, 167, 255
+}
+
+.success {
+    --notification-color: 79, 220, 152
+}
+
+.notification {
+    background: #FFF;   
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+    padding: 16px;
+    padding-left: 22px;
+
+    outline: 1px solid;
+    outline-offset: -1px;
+    outline-color: rgba(var(--notification-color), 0.3);
+
+    border-left: 6px solid;
+    border-radius: 2px;
+    border-color: rgba(var(--notification-color), 1);
+
+    display: grid;
+    grid-template-areas: 
+    "a b c"
+    ". d ."
+    ". e .";
+
+    align-items: center;
+    column-gap: 8px;
+    row-gap: 2px;
+
+    width: fit-content;
+    max-width: 500px;
+
+    animation: appear 0.8s;
+    animation-fill-mode: forwards;
+
+    margin-top: 5px;
+}
+
+.notification h3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.notification p {
+    font-size: 12px;
+}
+
+@keyframes appear {
+    from {
+        -webkit-transform: translateX(-120%);
+        transform: translateX(-120%);
+    }
+    to {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+}
+
+.disappear {
+    animation: disappear 0.5s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes disappear {
+    from {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    to {
+        -webkit-transform: translateX(-120%);
+        transform: translateX(-120%);
+    }
+}
+
+.notification svg:first-of-type {
+    grid-area: a;
+    width: 20px;
+    height: 20px;
+    fill: rgba(var(--notification-color), 1);
+}
+
+.notification h3 {
+    grid-area: b;
+    color: rgba(var(--notification-color), 1);
+}
+
+.notification svg:last-of-type {
+    grid-area: c;
+    width: 12px;
+    height: 12px;
+    stroke: #000;
+    stroke-width: 1.5px;
+    stroke-linecap: round;
+    margin-left: 10px; 
+    cursor: pointer;
+}
+
+.notification p {
+    grid-area: d;
+}
+
+.notification a {
+    grid-area: e;
+    text-decoration: underline;
+    font-size: 10px;
+    color: #757575;   
+}
+
+@media screen and (max-width: 600px) {
+    .notification {
+        grid-template-columns: 20px 1fr 22px;
+        justify-content: start;
+        max-width: 100%;
+        width: 100%;
+    }
+}

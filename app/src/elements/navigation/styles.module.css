@@ -1,0 +1,37 @@
+.navigation {
+    width: 100%;
+    height: 70px;
+    padding: 0 var(--var-content-side-padding);
+    justify-content: space-between;
+    background: #FCFCFC;
+}
+
+.logo {
+    width: 71px;
+}
+
+.menu_items {
+    gap: 16px;
+}
+
+.menu_item {
+    height: 30px;
+    padding: 0 10px;
+    background: none;
+    border-radius: 8px;
+    transition: 0.3s ease;
+}
+
+.menu_item:hover {
+    background: rgba(255, 0, 0, 0.25);
+}
+
+.menu_item.active {
+    background: rgba(255, 0, 0, 0.50);
+}
+
+.menu_item p {
+    color: #10181C;
+    font-size: 13px;
+    font-weight: 500;
+}
