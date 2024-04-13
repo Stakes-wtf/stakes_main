@@ -1,0 +1,25 @@
+.wallet-adapter-button-trigger {
+    border-radius: 8px;
+    background: rgba(1, 33, 57, 0.13);
+    color: #060D01;
+    height: 36px;
+    padding: 0 16px;
+    transition: 0.3s all;
+}
+
+.wallet-adapter-button-trigger > i {
+    display: none;
+}
+
+.wallet-adapter-button:hover {
+    background: rgba(255, 0, 0, 0.65) !important;
+}
+
+.wallet-adapter-button:active {
+    background: rgba(255, 0, 0, 0.75) !important;
+}
+
+.wallet-adapter-button.disabled {
+    cursor: not-allowed;
+    background: rgba(117, 117, 117, 0.5) !important;
+}

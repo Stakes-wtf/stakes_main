@@ -9,5 +9,7 @@ pub enum StakesError {
     #[msg("Invalid pool")]
     InvalidPool,
     #[msg("Value overflow occured")]
-    ValueOverflow
+    ValueOverflow,
+    #[msg("Invalid Fee Receiver")]
+    InvalidFeeReceiver,
 }

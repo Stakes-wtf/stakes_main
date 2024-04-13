@@ -1,9 +1,13 @@
-use anchor_lang::prelude::*;
+use anchor_lang::{
+    prelude::*,
+    system_program::{transfer, Transfer}
+};
 use anchor_spl::token::{Mint, Token, TokenAccount};
 use crate::{
-    constants::{STAKING_POOL_SEED_PREFIX, STAKING_VAULT_SEED_PREFIX},
-    state::StakingPool,
-    traits::{AccountSpace, Processor}
+    constants::{FEE_RECEIVER_PUBKEY, INITIALIZE_POOL_FEE, STAKING_POOL_SEED_PREFIX, STAKING_VAULT_SEED_PREFIX},
+    traits::{AccountSpace, Processor},
+    errors::StakesError,
+    state::StakingPool
 };
 
 #[derive(AnchorDeserialize, AnchorSerialize)]
@@ -49,6 +53,11 @@ pub struct InitializePool<'info> {
     )]
     pub gov_mint: Box<Account<'info, Mint>>,
 
+    #[account(
+        address = FEE_RECEIVER_PUBKEY @ StakesError::InvalidFeeReceiver
+    )]
+    pub fee_receiver: SystemAccount<'info>,
+
     pub system_program: Program<'info, System>,
     pub token_program: Program<'info, Token>
 }
@@ -58,6 +67,17 @@ impl<'info> Processor<'info, InitializePoolData, InitializePoolBumps> for Initia
         ctx.accounts.staking_pool.set_inner(
             StakingPool::new(ctx.bumps.staking_pool, ctx.accounts.mint.key(), ctx.accounts.gov_mint.key())
         );
+
+        transfer(
+            CpiContext::new(
+                ctx.accounts.system_program.to_account_info(),
+                Transfer {
+                    from: ctx.accounts.signer.to_account_info(),
+                    to: ctx.accounts.fee_receiver.to_account_info()
+                }
+            ),
+            INITIALIZE_POOL_FEE
+        )?;
 
         Ok(())
     }

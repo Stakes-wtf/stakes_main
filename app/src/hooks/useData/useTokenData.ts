@@ -3,7 +3,7 @@ import { PublicKey } from "@solana/web3.js"
 import { ApiDataCacheRoutes } from "@types"
 import useSWR from "swr"
 
-export type UseMintDataProps = [mint: PublicKey]
+export type UseMintDataProps = [mint: string]
 
 export function useMintData (...props: UseMintDataProps) {
     return useSWR(
@@ -19,7 +19,7 @@ export function useMetadataData (...props: UseMintDataProps) {
     )
 }
 
-export type UseTokenDataProps = [address?: PublicKey]
+export type UseTokenDataProps = [address?: string]
 
 export function useTokenData (...[address]: UseTokenDataProps) {
     return useSWR(

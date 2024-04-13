@@ -1,4 +1,4 @@
-import { Navigation } from '@elements'
+import { Footer, Navigation } from '@elements'
 import { StakingPage, VestingPage, CreatePage } from '@pages'
 import { FC, PropsWithChildren, useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
@@ -12,6 +12,7 @@ const PageWrapper: FC<PropsWithChildren<PageWrapperProps>> = ({children}) => {
         <section className={'content'}>
             {children}
         </section>
+        <Footer/>
         </>
     )
 }

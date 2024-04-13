@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-use crate::{constants::{GOV_PRICE_DENOMINATOR, SECONDS_PER_DAY, STAKING_POOL_SEED_PREFIX}, errors::StakesError, traits::AccountSpace};
+use crate::{constants::{BRIBE_MIN_SHARE_PER_DAY, BRIBE_SHARE_PER_DAY, GOV_PRICE_DENOMINATOR, SECONDS_PER_DAY, STAKING_POOL_SEED_PREFIX}, errors::StakesError, traits::AccountSpace};
 
 #[account]
 pub struct StakingPool {
@@ -86,8 +86,8 @@ impl StakingPool {
         }
 
         let total_bribes = total_balance - self.active_balance;
-        let current_share = total_bribes * 5 / 100 * periods_passed as u64;
-        let min_share = total_balance / 1000;
+        let current_share = total_bribes * BRIBE_SHARE_PER_DAY / 1000 * periods_passed as u64;
+        let min_share = total_balance * BRIBE_MIN_SHARE_PER_DAY / 1000;
 
         if current_share >= total_bribes {
             total_bribes
