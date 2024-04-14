@@ -8,7 +8,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 export const VestingPage: FC = () => {
 
     const { publicKey } = useWallet()
-    const { data: positions, mutate } = useData(ApiDataCacheRoutes.GetAllVestingPositionsByUser, publicKey || undefined)
+    const { data: positions, mutate } = useData(ApiDataCacheRoutes.GetAllVestingPositionsByUser, publicKey?.toBase58() || undefined)
 
     return (
         <div className={styles.wrapper}>
