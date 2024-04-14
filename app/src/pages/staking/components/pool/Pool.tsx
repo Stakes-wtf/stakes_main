@@ -174,7 +174,7 @@ export const Pool: FC<Props> = ({
                             setSelectedTab('bribe')
                         }}
                         >
-                            Add Incentives
+                            Bribe
                         </button>
                     </div>
                 {
