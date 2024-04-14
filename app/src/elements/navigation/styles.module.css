@@ -4,6 +4,7 @@
     padding: 0 var(--var-content-side-padding);
     justify-content: space-between;
     background: #FCFCFC;
+    position: relative;
 }
 
 .logo {
@@ -39,5 +40,36 @@
 @media screen and (max-width: 960px) {
     .logo {
         width: 48px;
+    }
+}
+
+.burger_button {
+    width: 32px;
+    height: 32px;
+}
+
+.mobile_navigation {
+    width: 100%;
+    top: 100%;
+    left: 0;
+    position: absolute;
+    background: #FCFCFC;
+    padding: 12px var(--var-content-side-padding);
+    border-radius: 0 0 24px 24px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 16px;
+    box-shadow: 0 2px 2px rgba(1, 33, 57, 0.15);
+}
+
+@media screen and (max-width: 660px) {
+    .menu_items {
+        width: 100%;
+        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .menu_item {
+        width: 100%;
     }
 }
