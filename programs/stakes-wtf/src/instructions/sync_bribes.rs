@@ -39,9 +39,7 @@ impl<'info> Processor<'info, SyncBribesData, SyncBribesBumps> for SyncBribes<'in
     fn handle(ctx: Context<Self>, _data: SyncBribesData) -> Result<()> {
 
         let amount = ctx.accounts.staking_pool.get_current_bribe_amount(ctx.accounts.staking_vault.amount);
-        if amount > 0 {
-            ctx.accounts.staking_pool.add_to_active_balance(amount)?;
-        }
+        ctx.accounts.staking_pool.add_to_active_balance(amount)?;
         ctx.accounts.staking_pool.sync_gov_price(ctx.accounts.gov_mint.supply)?;
         ctx.accounts.staking_pool.sync_last_bribe_distribution_timestamp();
         

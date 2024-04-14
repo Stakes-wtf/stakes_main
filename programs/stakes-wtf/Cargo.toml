@@ -18,4 +18,5 @@ testing = []
 
 [dependencies]
 anchor-lang = { version = "0.29.0", features = ["init-if-needed"] }
+solana-program = "1.18.9"
 anchor-spl = "0.29.0"

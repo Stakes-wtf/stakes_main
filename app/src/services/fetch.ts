@@ -16,23 +16,23 @@ export async function fetchAllPools (): Promise<StakingPool[]> {
     } as StakingPool)))
 }
 
-export async function fetchMintDetails (mint: PublicKey): Promise<MintInfo> {
-    return getMint(connection, mint)
+export async function fetchMintDetails (mint: string): Promise<MintInfo> {
+    return getMint(connection, new PublicKey(mint))
     .then(m => ({
         supply: Number(m.supply.toString()),
         denominator: Math.pow(10, m.decimals)
     }))
 }
 
-export async function fetchTokenAccountDetails (tokenAddress: PublicKey): Promise<TokenAccountInfo> {
-    return getAccount(connection, tokenAddress)
+export async function fetchTokenAccountDetails (tokenAddress: string): Promise<TokenAccountInfo> {
+    return getAccount(connection, new PublicKey(tokenAddress))
     .then(a => ({
         amount: Number(a.amount.toString())
     }))
 }
 
-export async function fetchMintMetadata (mint: PublicKey): Promise<MintMetadata> {
-    const info = await connection.getAccountInfo(deriveMetadataAddress(mint))
+export async function fetchMintMetadata (mint: string): Promise<MintMetadata> {
+    const info = await connection.getAccountInfo(deriveMetadataAddress(new PublicKey(mint)))
     if (!info) throw new Error("No metadata account")
 
     const name = Buffer.from([...info.data.slice(32 + 32 + 4, 1 + 32 + 32 + 4 + 32)].filter(b => b !== 0)).toString("utf-8")
@@ -51,12 +51,12 @@ export async function fetchMintMetadata (mint: PublicKey): Promise<MintMetadata>
     }
 }
 
-export async function fetchAllVestingPositionsByUser (wallet: PublicKey): Promise<VestingPosition[]> {
+export async function fetchAllVestingPositionsByUser (wallet: string): Promise<VestingPosition[]> {
     return program.account.vestingPosition.all([
         {
             memcmp: {
                 offset: 8 + 32,
-                bytes: wallet.toBase58()
+                bytes: wallet
             }
         }
     ])

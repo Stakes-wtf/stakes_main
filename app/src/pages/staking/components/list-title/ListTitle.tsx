@@ -7,6 +7,7 @@ export const ListTitle: FC = () => {
         <div className={styles.wrapper}>
             <p>Token</p>
             <p>TVL</p>
+            <p>APR</p>
             <p>Your Gov Stake</p>
             <p>Claimable</p>
         </div>

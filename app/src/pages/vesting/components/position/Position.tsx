@@ -16,8 +16,8 @@ export const Position: FC<Props> = ({
     mutate
 }) => {
 
-    const { data: mintData } = useData(ApiDataCacheRoutes.GetMintInfo, mint)
-    const { data: metadata } = useData(ApiDataCacheRoutes.GetMetadata, mint)
+    const { data: mintData } = useData(ApiDataCacheRoutes.GetMintInfo, mint.toBase58())
+    const { data: metadata } = useData(ApiDataCacheRoutes.GetMetadata, mint.toBase58())
 
     const onClaim = useTransaction(
         (w) => createClaimInstruction(

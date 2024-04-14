@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-use crate::{constants::SECONDS_PER_DAY, traits::AccountSpace};
+use crate::{constants::{SECONDS_PER_DAY, VESTING_UNLOCK_DAYS}, traits::AccountSpace};
 
 #[account]
 pub struct VestingPosition {
@@ -19,7 +19,7 @@ impl VestingPosition {
     pub fn new(
         staking_pool: Pubkey, owner: Pubkey, mint: Pubkey, amount: u64
     ) -> Self {
-        let claim_per_day = amount / 20;
+        let claim_per_day = amount / VESTING_UNLOCK_DAYS;
         let last_claim_timestamp: i64 = Clock::get().unwrap().unix_timestamp
             .checked_div(SECONDS_PER_DAY).unwrap()
             .checked_mul(SECONDS_PER_DAY).unwrap();
