@@ -118,7 +118,7 @@
     color: #757575;   
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 660px) {
     .notification {
         grid-template-columns: 20px 1fr 22px;
         justify-content: start;

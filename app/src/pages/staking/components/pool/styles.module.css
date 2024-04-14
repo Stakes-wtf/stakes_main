@@ -80,6 +80,7 @@
 .action_description {
     font-size: 14px !important;
     font-weight: 300 !important;
+    text-align: left !important;
 }
 
 .action_wrapper {
@@ -102,4 +103,37 @@
 
 .action_wrapper button {
     width: 30%;
+}
+
+
+@media screen and (max-width: 660px) {
+    .pool_info {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 16px;
+    }
+    .mint_info {
+        grid-column: 3 span;
+        gap: 8px;
+    }
+    .avatar, .avatar img {
+        width: 24px;
+        height: 24px;
+    }
+    .pool_info > :last-child {
+        display: none;
+    }
+    .actions_menu {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .action_wrapper {
+        width: 100%;
+    }
+    .action_wrapper input {
+        width: 100%;
+    }
+    .action_wrapper button {
+        width: 100%;
+    }
 }

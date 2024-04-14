@@ -8,7 +8,7 @@ export const ListTitle: FC = () => {
             <p>Token</p>
             <p>TVL</p>
             <p>APR</p>
-            <p>Your Gov Stake</p>
+            <p>Your Stake</p>
             <p>Claimable</p>
         </div>
     )
